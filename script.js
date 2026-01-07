@@ -1,106 +1,86 @@
-// Persistent Points
-let points = parseInt(localStorage.getItem('points')) || 0;
-const pointsDisplay = document.getElementById('pointsDisplay');
-const newsList = document.getElementById('newsList');
-const smallBtn1 = document.getElementById('smallBtn1');
-const smallBtn2 = document.getElementById('smallBtn2');
-
-function updatePoints() {
-    pointsDisplay.innerText = `Points: ${points}`;
-    localStorage.setItem('points', points);
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#000;
+    color:silver;
 }
 
-// Sample 20 news items
-const newsData = [
-    "Arsenal wins 2-1 vs Chelsea",
-    "Messi scores hat-trick for Inter Miami",
-    "Premier League transfers update",
-    "Manchester United lineup news",
-    "Liverpool suffers defeat",
-    "Barcelona signs new player",
-    "Real Madrid match highlights",
-    "Bayern Munich wins Bundesliga",
-    "Juventus announces new coach",
-    "PSG signs superstar forward",
-    "Man City top of the table",
-    "AC Milan injury updates",
-    "Tottenham predicts lineup",
-    "Chelsea transfer rumors",
-    "Leicester surprise win",
-    "Napoli beats Lazio",
-    "Inter Milan latest news",
-    "Real Sociedad match report",
-    "Sevilla wins Europa League",
-    "Ajax champions league update"
-];
-
-// Show simulated ad
-function showAd(callback) {
-    alert('Ad is showing...');
-    setTimeout(() => {
-        alert('Ad finished!');
-        callback();
-    }, 1000);
+header {
+    display:flex;
+    justify-content:space-between;
+    padding:10px 20px;
+    background:#111;
 }
 
-// Render news
-function renderNews() {
-    newsList.innerHTML = '';
-    newsData.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'news-item';
-        div.innerText = item;
-        div.addEventListener('click', () => {
-            showAd(() => {
-                points += 5;
-                updatePoints();
-                alert('Points earned: 5');
-            });
-        });
-        newsList.appendChild(div);
-    });
-    newsList.style.display = 'block';
+button {
+    border:1px solid #C0C0C0;
+    background:#111;
+    cursor:pointer;
+    font-weight:bold;
+    color:#C0C0C0;
+    text-shadow:none;
+    transition: all 0.2s ease;
 }
 
-// Big Buttons
-document.getElementById('newsBtn').addEventListener('click', () => {
-    renderNews();
-    showAd(() => {});
-});
+button:hover {
+    color:#FFFFFF;
+    transform: translateY(-1px);
+}
 
-document.getElementById('tipsBtn').addEventListener('click', () => {
-    showAd(() => {
-        alert('Open Viber for Tips!');
-    });
-});
+button.small { padding:3px 6px; font-size:12px; }
+button.medium { padding:8px 15px; font-size:16px; }
+button.large { padding:12px 25px; font-size:20px; }
 
-// Small Buttons
-smallBtn1.addEventListener('click', () => {
-    showAd(() => {
-        points += 10;
-        updatePoints();
-        alert('Points earned: 10');
-    });
-});
+main {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
+    gap:20px;
+}
 
-smallBtn2.addEventListener('click', () => {
-    showAd(() => {
-        points += 20;
-        updatePoints();
-        alert('Points earned: 20');
-    });
-});
+.video, .news, .tips {
+    width:90%;
+    max-width:600px;
+    background:#111;
+    padding:15px;
+    border:1px solid #C0C0C0;
+}
 
-// Admin activates small buttons after 2s
-setTimeout(() => {
-    smallBtn1.disabled = false;
-    smallBtn2.disabled = false;
-}, 2000);
+iframe { width:100%; height:300px; }
 
-// Top 20 simulation
-document.getElementById('top20Btn').addEventListener('click', () => {
-    alert('Top 20 Leaderboard\n(Real leaderboard requires backend/Firebase)');
-});
+.point-display { margin-top:10px; font-size:18px; color:white; }
 
-// Initial update
-updatePoints();
+.ad {
+    width: 90%;
+    max-width: 600px;
+    background: #222;
+    color: #C0C0C0;
+    border: 1px solid #C0C0C0;
+    padding: 10px;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.modal {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.9);
+    color:white;
+    overflow:auto;
+    padding:50px;
+    z-index:200;
+}
+
+.modal-content {
+    background:#111;
+    padding:20px;
+    border:1px solid #C0C0C0;
+    max-width:600px;
+    margin:auto;
+}
+
+ul { padding-left:20px; }
