@@ -1,43 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>90 Plus Web App</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- Top Bar -->
-<div class="top-bar">
-    <div id="pointsDisplay">Points: 0</div>
-    <button id="top20Btn" class="top-btn">Top 20</button>
-</div>
-
-<!-- Main Buttons -->
-<div class="main-buttons">
-    <button id="newsBtn" class="big-btn">News</button>
-    <button id="tipsBtn" class="big-btn">Free / VIP Tips</button>
-</div>
-
-<!-- News List -->
-<div id="newsList" class="news-list"></div>
-
-<!-- Small Buttons -->
-<div class="small-buttons">
-    <button id="smallBtn1" disabled>+10 Points</button>
-    <button id="smallBtn2" disabled>+20 Points</button>
-</div>
-
-<!-- Admin Contact -->
-<div class="admin-link">
-    <a href="viber://chat?number=%2B1234567890" target="_blank">Contact Admin via Viber</a>
-</div>
-
-<!-- Ads Banners -->
-<div class="ad-banner" id="topAd">Top Ad Banner</div>
-<div class="ad-banner" id="bottomAd">Bottom Ad Banner</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"> 
+ <head></head> 
+ <body> 
+  <h1> Hello </h1> 
+  <div>
+    This is a html example from Dcoder, 
+   <br> have fun. :) 
+  </div> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>90+ App Full Prototype</title> 
+  <link rel="stylesheet" href="style.css"> 
+  <header> <button class="small" onclick="showGuide()">Point Guide</button> <button class="small" onclick="showRegister()">Register</button> <button class="small" onclick="showTop20()">Top 20 Points</button> <button class="small" onclick="showAdminDashboard()">Admin Panel</button> 
+  </header> 
+  <main> <!-- Top Banner Ad --> 
+   <div id="top-ad" class="ad" onclick="clickBanner('top')">
+    Top Banner Ad
+   </div> <!-- Video Section --> 
+   <div class="video" id="videoSection"> 
+    <h3>Football Videos</h3> 
+    <div id="videosList"></div> 
+   </div> <!-- News Section --> 
+   <div class="news" id="newsSection"> 
+    <h3>News</h3> 
+    <div id="newsList"></div> 
+   </div> <!-- Free + VIP Tips --> 
+   <div class="tips" id="tipsSection"> 
+    <h3>Free Tips</h3> <button class="medium" onclick="unlockFreeTips()">View Free Tips</button> 
+    <ul id="freeTipsList" style="display:none;"></ul> 
+    <h3>VIP Tips</h3> <a href="https://viber.com/" target="_blank">Join VIP Viber</a> 
+   </div> <!-- Bottom Banner Ad --> 
+   <div id="bottom-ad" class="ad" onclick="clickBanner('bottom')">
+    Bottom Banner Ad
+   </div> 
+   <div class="point-display">
+     Your Points: <span id="points">0</span> 
+   </div> 
+  </main> <!-- Modal --> 
+  <div id="modal" class="modal"> 
+   <div class="modal-content"> <span style="float:right;cursor:pointer;" onclick="closeModal()">X</span> 
+    <div id="modal-body"></div> 
+   </div> 
+  </div> <!-- Firebase --> 
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script> 
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script> 
+  <script src="app.js"></script> 
+ </body>
+    </html>
